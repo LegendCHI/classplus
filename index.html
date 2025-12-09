@@ -6,13 +6,13 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       display: flex;
-      background: #f5f7fa;
+      background: #ecf0f1;
     }
     /* Barra lateral */
     .sidebar {
-      width: 220px;
+      width: 240px;
       background: #2c3e50;
       color: white;
       height: 100vh;
@@ -22,32 +22,35 @@
     .sidebar h2 {
       text-align: center;
       margin-bottom: 20px;
+      font-size: 1.2rem;
     }
     .sidebar a {
       display: block;
       color: white;
-      padding: 12px;
+      padding: 12px 20px;
       text-decoration: none;
       margin: 5px 0;
+      transition: background 0.3s;
     }
     .sidebar a:hover {
       background: #1abc9c;
     }
     /* Contenido principal */
     .main {
-      margin-left: 220px;
+      margin-left: 240px;
       padding: 20px;
       flex: 1;
     }
     .card {
       background: white;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     h2 {
       color: #2c3e50;
+      margin-bottom: 1rem;
     }
     table {
       width: 100%;
@@ -68,6 +71,14 @@
     input[type="number"] {
       width: 60px;
       text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 4px;
+    }
+    .average {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #34495e;
     }
     .footer {
       text-align: center;
@@ -79,7 +90,7 @@
 <body>
   <!-- Barra lateral -->
   <div class="sidebar">
-    <h2>Agustín Andrés</h2>
+    <h2>Alumno: Agustín Andrés</h2>
     <a href="#calificaciones">Calificaciones</a>
     <a href="#asistencias">Asistencias</a>
     <a href="#actividades">Actividades</a>
@@ -88,25 +99,84 @@
 
   <!-- Contenido principal -->
   <div class="main">
+    <!-- Calificaciones -->
     <div class="card" id="calificaciones">
       <h2>📚 Calificaciones</h2>
       <table id="gradesTable">
-        <tr><th>Asignatura</th><th>Nota</th></tr>
-        <tr><td>Matemáticas</td><td><input type="number" step="0.1" value="6.5"></td></tr>
-        <tr><td>Lenguaje</td><td><input type="number" step="0.1" value="5.8"></td></tr>
-        <tr><td>Ciencias</td><td><input type="number" step="0.1" value="6.0"></td></tr>
-        <tr><td>Historia</td><td><input type="number" step="0.1" value="4.5"></td></tr>
-        <tr><td>Inglés</td><td><input type="number" step="0.1" value="3.8"></td></tr>
-        <tr><td>Educación Física</td><td><input type="number" step="0.1" value="5.0"></td></tr>
-        <tr><td>Arte</td><td><input type="number" step="0.1" value="4.2"></td></tr>
+        <tr><th>Asignatura</th><th colspan="5">Notas</th><th>Promedio</th></tr>
+        <tr>
+          <td>Matemáticas</td>
+          <td><input type="number" step="0.1" value="6.5"></td>
+          <td><input type="number" step="0.1" value="4.9"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td class="average"></td>
+        </tr>
+        <tr>
+          <td>Lenguaje</td>
+          <td><input type="number" step="0.1" value="5.8"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td class="average"></td>
+        </tr>
+        <tr>
+          <td>Ciencias</td>
+          <td><input type="number" step="0.1" value="6.0"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td class="average"></td>
+        </tr>
+        <tr>
+          <td>Historia</td>
+          <td><input type="number" step="0.1" value="4.5"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td class="average"></td>
+        </tr>
+        <tr>
+          <td>Inglés</td>
+          <td><input type="number" step="0.1" value="3.8"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td class="average"></td>
+        </tr>
+        <tr>
+          <td>Educación Física</td>
+          <td><input type="number" step="0.1" value="5.0"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td class="average"></td>
+        </tr>
+        <tr>
+          <td>Arte</td>
+          <td><input type="number" step="0.1" value="4.2"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td><input type="number" step="0.1"></td>
+          <td class="average"></td>
+        </tr>
       </table>
     </div>
 
+    <!-- Asistencias -->
     <div class="card" id="asistencias">
       <h2>🎓 Asistencias</h2>
       <p>Asistencia acumulada: <strong>95%</strong></p>
     </div>
 
+    <!-- Actividades -->
     <div class="card" id="actividades">
       <h2>📝 Actividades</h2>
       <ul>
@@ -116,9 +186,10 @@
       </ul>
     </div>
 
+    <!-- Observaciones -->
     <div class="card" id="observaciones">
       <h2>💬 Observaciones</h2>
-      <p>Agustín muestra buen desempeño general, aunque debe reforzar Inglés.</p>
+      <p>Agustín muestra buen desempeño general, aunque debe reforzar Inglés y mantener constancia en Historia.</p>
     </div>
 
     <div class="footer">
@@ -127,22 +198,23 @@
   </div>
 
   <script>
-    // Función para marcar notas bajas en rojo
     function updateGrades() {
-      const inputs = document.querySelectorAll("#gradesTable input");
-      inputs.forEach(input => {
-        if (parseFloat(input.value) < 4.0) {
-          input.classList.add("low-grade");
-        } else {
-          input.classList.remove("low-grade");
-        }
-      });
-    }
-    // Actualizar al cargar y cada vez que se edite
-    window.onload = updateGrades;
-    document.querySelectorAll("#gradesTable input").forEach(input => {
-      input.addEventListener("input", updateGrades);
-    });
-  </script>
-</body>
-</html>
+      const rows = document.querySelectorAll("#gradesTable tr");
+      rows.forEach((row, index) => {
+        if (index === 0) return; // saltar encabezado
+        const inputs = row.querySelectorAll("input");
+        let sum = 0, count = 0;
+        inputs.forEach(input => {
+          const val = parseFloat(input.value);
+          if (!isNaN(val)) {
+            sum += val;
+            count++;
+            if (val < 4.0) {
+              input.classList.add("low-grade");
+            } else {
+              input.classList.remove("low-grade");
+            }
+          } else {
+            input.classList.remove("low-grade");
+          }
+        });
