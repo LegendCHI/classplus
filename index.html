@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MasterClass Escolar Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #34495e;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #1abc9c;
+    }
+    section {
+      padding: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MasterClass Escolar - Demo</h1>
+    <p>Sin registro de apoderados</p>
+  </header>
+
+  <nav>
+    <a href="#calificaciones">Calificaciones</a>
+    <a href="#asistencias">Asistencias</a>
+    <a href="#actividades">Actividades</a>
+  </nav>
+
+  <section id="calificaciones">
+    <div class="card">
+      <h2>📚 Calificaciones</h2>
+      <table>
+        <tr><th>Asignatura</th><th>Nota</th></tr>
+        <tr><td>Matemáticas</td><td>6.5</td></tr>
+        <tr><td>Lenguaje</td><td>5.8</td></tr>
+        <tr><td>Ciencias</td><td>6.0</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="asistencias">
+    <div class="card">
+      <h2>🎓 Asistencias</h2>
+      <p>Asistencia acumulada: <strong>95%</strong></p>
+    </div>
+  </section>
+
+  <section id="actividades">
+    <div class="card">
+      <h2>📝 Actividades</h2>
+      <ul>
+        <li>Proyecto de Ciencias - Entrega 15/12</li>
+        <li>Ensayo de Lenguaje - Entrega 20/12</li>
+        <li>Prueba de Matemáticas - 22/12</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>Demo MasterClass Escolar © 2025</p>
+  </div>
+
+  <script>
+    // Ejemplo: alerta al cargar
+    window.onload = () => {
+      console.log("Página MasterClass Escolar cargada correctamente.");
+    };
+  </script>
+</body>
+</html>
