@@ -8,12 +8,12 @@
       margin: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
       display: flex;
-      background: #ecf0f1;
+      background: #f0f2f5;
     }
     /* Barra lateral */
     .sidebar {
       width: 240px;
-      background: #2c3e50;
+      background: #1e2a38;
       color: white;
       height: 100vh;
       position: fixed;
@@ -23,6 +23,7 @@
       text-align: center;
       margin-bottom: 20px;
       font-size: 1.2rem;
+      color: #00c3ff;
     }
     .sidebar a {
       display: block;
@@ -33,7 +34,7 @@
       transition: background 0.3s;
     }
     .sidebar a:hover {
-      background: #1abc9c;
+      background: #00c3ff;
     }
     /* Contenido principal */
     .main {
@@ -49,7 +50,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     h2 {
-      color: #2c3e50;
+      color: #1e2a38;
       margin-bottom: 1rem;
     }
     table {
@@ -85,12 +86,19 @@
       margin-top: 2rem;
       color: #555;
     }
+    .student-name {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #00c3ff;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
   <!-- Barra lateral -->
   <div class="sidebar">
-    <h2>Alumno: Agustín Andrés</h2>
+    <h2>Agustín Andrés</h2>
     <a href="#calificaciones">Calificaciones</a>
     <a href="#asistencias">Asistencias</a>
     <a href="#actividades">Actividades</a>
@@ -102,6 +110,7 @@
     <!-- Calificaciones -->
     <div class="card" id="calificaciones">
       <h2>📚 Calificaciones</h2>
+      <div class="student-name">Alumno: Agustín Andrés</div>
       <table id="gradesTable">
         <tr><th>Asignatura</th><th colspan="5">Notas</th><th>Promedio</th></tr>
         <tr>
@@ -170,28 +179,6 @@
       </table>
     </div>
 
-    <!-- Asistencias -->
-    <div class="card" id="asistencias">
-      <h2>🎓 Asistencias</h2>
-      <p>Asistencia acumulada: <strong>95%</strong></p>
-    </div>
-
-    <!-- Actividades -->
-    <div class="card" id="actividades">
-      <h2>📝 Actividades</h2>
-      <ul>
-        <li>Proyecto de Ciencias - Entrega 15/12</li>
-        <li>Ensayo de Lenguaje - Entrega 20/12</li>
-        <li>Prueba de Matemáticas - 22/12</li>
-      </ul>
-    </div>
-
-    <!-- Observaciones -->
-    <div class="card" id="observaciones">
-      <h2>💬 Observaciones</h2>
-      <p>Agustín muestra buen desempeño general, aunque debe reforzar Inglés y mantener constancia en Historia.</p>
-    </div>
-
     <div class="footer">
       <p>Demo MasterClass Escolar © 2025</p>
     </div>
@@ -218,3 +205,14 @@
             input.classList.remove("low-grade");
           }
         });
+        const avgCell = row.querySelector(".average");
+        avgCell.textContent = count > 0 ? (sum / count).toFixed(2) : "-";
+      });
+    }
+    window.onload = updateGrades;
+    document.querySelectorAll("#gradesTable input").forEach(input => {
+      input.addEventListener("input", updateGrades);
+    });
+  </script>
+</body>
+</html>
