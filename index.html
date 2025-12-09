@@ -2,35 +2,42 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>MasterClass Escolar Demo</title>
+  <title>MasterClass Escolar - Agustín Andrés</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      background: #f5f7fa;
     }
-    header {
+    /* Barra lateral */
+    .sidebar {
+      width: 220px;
       background: #2c3e50;
       color: white;
-      padding: 1rem;
+      height: 100vh;
+      position: fixed;
+      padding-top: 20px;
+    }
+    .sidebar h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
-    nav {
-      background: #34495e;
-      display: flex;
-      justify-content: center;
-    }
-    nav a {
+    .sidebar a {
+      display: block;
       color: white;
-      padding: 1rem;
+      padding: 12px;
       text-decoration: none;
+      margin: 5px 0;
     }
-    nav a:hover {
+    .sidebar a:hover {
       background: #1abc9c;
     }
-    section {
-      padding: 2rem;
+    /* Contenido principal */
+    .main {
+      margin-left: 220px;
+      padding: 20px;
+      flex: 1;
     }
     .card {
       background: white;
@@ -54,48 +61,53 @@
       padding: 0.5rem;
       text-align: center;
     }
-    .footer {
-      background: #2c3e50;
-      color: white;
+    .low-grade {
+      color: red;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 60px;
       text-align: center;
-      padding: 1rem;
+    }
+    .footer {
+      text-align: center;
       margin-top: 2rem;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>MasterClass Escolar - Demo</h1>
-    <p>Sin registro de apoderados</p>
-  </header>
-
-  <nav>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <h2>Agustín Andrés</h2>
     <a href="#calificaciones">Calificaciones</a>
     <a href="#asistencias">Asistencias</a>
     <a href="#actividades">Actividades</a>
-  </nav>
+    <a href="#observaciones">Observaciones</a>
+  </div>
 
-  <section id="calificaciones">
-    <div class="card">
+  <!-- Contenido principal -->
+  <div class="main">
+    <div class="card" id="calificaciones">
       <h2>📚 Calificaciones</h2>
-      <table>
+      <table id="gradesTable">
         <tr><th>Asignatura</th><th>Nota</th></tr>
-        <tr><td>Matemáticas</td><td>6.5</td></tr>
-        <tr><td>Lenguaje</td><td>5.8</td></tr>
-        <tr><td>Ciencias</td><td>6.0</td></tr>
+        <tr><td>Matemáticas</td><td><input type="number" step="0.1" value="6.5"></td></tr>
+        <tr><td>Lenguaje</td><td><input type="number" step="0.1" value="5.8"></td></tr>
+        <tr><td>Ciencias</td><td><input type="number" step="0.1" value="6.0"></td></tr>
+        <tr><td>Historia</td><td><input type="number" step="0.1" value="4.5"></td></tr>
+        <tr><td>Inglés</td><td><input type="number" step="0.1" value="3.8"></td></tr>
+        <tr><td>Educación Física</td><td><input type="number" step="0.1" value="5.0"></td></tr>
+        <tr><td>Arte</td><td><input type="number" step="0.1" value="4.2"></td></tr>
       </table>
     </div>
-  </section>
 
-  <section id="asistencias">
-    <div class="card">
+    <div class="card" id="asistencias">
       <h2>🎓 Asistencias</h2>
       <p>Asistencia acumulada: <strong>95%</strong></p>
     </div>
-  </section>
 
-  <section id="actividades">
-    <div class="card">
+    <div class="card" id="actividades">
       <h2>📝 Actividades</h2>
       <ul>
         <li>Proyecto de Ciencias - Entrega 15/12</li>
@@ -103,17 +115,34 @@
         <li>Prueba de Matemáticas - 22/12</li>
       </ul>
     </div>
-  </section>
 
-  <div class="footer">
-    <p>Demo MasterClass Escolar © 2025</p>
+    <div class="card" id="observaciones">
+      <h2>💬 Observaciones</h2>
+      <p>Agustín muestra buen desempeño general, aunque debe reforzar Inglés.</p>
+    </div>
+
+    <div class="footer">
+      <p>Demo MasterClass Escolar © 2025</p>
+    </div>
   </div>
 
   <script>
-    // Ejemplo: alerta al cargar
-    window.onload = () => {
-      console.log("Página MasterClass Escolar cargada correctamente.");
-    };
+    // Función para marcar notas bajas en rojo
+    function updateGrades() {
+      const inputs = document.querySelectorAll("#gradesTable input");
+      inputs.forEach(input => {
+        if (parseFloat(input.value) < 4.0) {
+          input.classList.add("low-grade");
+        } else {
+          input.classList.remove("low-grade");
+        }
+      });
+    }
+    // Actualizar al cargar y cada vez que se edite
+    window.onload = updateGrades;
+    document.querySelectorAll("#gradesTable input").forEach(input => {
+      input.addEventListener("input", updateGrades);
+    });
   </script>
 </body>
 </html>
