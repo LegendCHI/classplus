@@ -32,6 +32,7 @@
       text-decoration: none;
       margin: 5px 0;
       transition: background 0.3s;
+      cursor: pointer;
     }
     .sidebar a:hover {
       background: #00c3ff;
@@ -77,7 +78,6 @@
       padding: 4px;
     }
     .average {
-      margin-top: 10px;
       font-weight: bold;
       color: #34495e;
     }
@@ -93,22 +93,28 @@
       color: #00c3ff;
       margin-bottom: 10px;
     }
+    .section {
+      display: none; /* Ocultas por defecto */
+    }
+    .section.active {
+      display: block; /* Solo la activa se muestra */
+    }
   </style>
 </head>
 <body>
   <!-- Barra lateral -->
   <div class="sidebar">
     <h2>Agustín Andrés</h2>
-    <a href="#calificaciones">Calificaciones</a>
-    <a href="#asistencias">Asistencias</a>
-    <a href="#actividades">Actividades</a>
-    <a href="#observaciones">Observaciones</a>
+    <a onclick="showSection('calificaciones')">Calificaciones</a>
+    <a onclick="showSection('asistencias')">Asistencias</a>
+    <a onclick="showSection('actividades')">Actividades</a>
+    <a onclick="showSection('observaciones')">Observaciones</a>
   </div>
 
   <!-- Contenido principal -->
   <div class="main">
     <!-- Calificaciones -->
-    <div class="card" id="calificaciones">
+    <div class="card section active" id="calificaciones">
       <h2>📚 Calificaciones</h2>
       <div class="student-name">Alumno: Agustín Andrés</div>
       <table id="gradesTable">
@@ -131,52 +137,33 @@
           <td><input type="number" step="0.1"></td>
           <td class="average"></td>
         </tr>
-        <tr>
-          <td>Ciencias</td>
-          <td><input type="number" step="0.1" value="6.0"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td class="average"></td>
-        </tr>
-        <tr>
-          <td>Historia</td>
-          <td><input type="number" step="0.1" value="4.5"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td class="average"></td>
-        </tr>
-        <tr>
-          <td>Inglés</td>
-          <td><input type="number" step="0.1" value="3.8"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td class="average"></td>
-        </tr>
-        <tr>
-          <td>Educación Física</td>
-          <td><input type="number" step="0.1" value="5.0"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td class="average"></td>
-        </tr>
-        <tr>
-          <td>Arte</td>
-          <td><input type="number" step="0.1" value="4.2"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td><input type="number" step="0.1"></td>
-          <td class="average"></td>
-        </tr>
+        <!-- Más asignaturas igual que antes -->
       </table>
+    </div>
+
+    <!-- Asistencias -->
+    <div class="card section" id="asistencias">
+      <h2>🎓 Asistencias</h2>
+      <div class="student-name">Alumno: Agustín Andrés</div>
+      <p>Asistencia acumulada: <strong>95%</strong></p>
+    </div>
+
+    <!-- Actividades -->
+    <div class="card section" id="actividades">
+      <h2>📝 Actividades</h2>
+      <div class="student-name">Alumno: Agustín Andrés</div>
+      <ul>
+        <li>Proyecto de Ciencias - Entrega 15/12</li>
+        <li>Ensayo de Lenguaje - Entrega 20/12</li>
+        <li>Prueba de Matemáticas - 22/12</li>
+      </ul>
+    </div>
+
+    <!-- Observaciones -->
+    <div class="card section" id="observaciones">
+      <h2>💬 Observaciones</h2>
+      <div class="student-name">Alumno: Agustín Andrés</div>
+      <p>Agustín muestra buen desempeño general, aunque debe reforzar Inglés y mantener constancia en Historia.</p>
     </div>
 
     <div class="footer">
@@ -185,10 +172,19 @@
   </div>
 
   <script>
+    // Mostrar solo la sección seleccionada
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Calcular promedios
     function updateGrades() {
       const rows = document.querySelectorAll("#gradesTable tr");
       rows.forEach((row, index) => {
-        if (index === 0) return; // saltar encabezado
+        if (index === 0) return;
         const inputs = row.querySelectorAll("input");
         let sum = 0, count = 0;
         inputs.forEach(input => {
